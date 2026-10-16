@@ -1,28 +1,75 @@
-# RefRoute release bundle
+# RefRoute (WACV 2027)
 
-This bundle contains the shareable artifacts promised by the paper and the
-measurements needed to verify its reported runtime table. Two sentences define
-the core release scope.
+> **RefRoute: Connectivity-Preserving Routing for Part-Level Multi-Reference Composition**
+> <br>
+> TODO_AUTHORS
+> <br>
+> TODO_AFFILIATIONS
+> <br>
 
-From the Limitations:
+<a href="TODO_PAPER_URL"><img src="https://img.shields.io/badge/arXiv-TODO-A42C25.svg" alt="arXiv"></a>
+<img src="./assets/teaser.jpg" width="100%" />
 
-> We instead provide the generation code and shareable evaluation metadata.
+RefRoute transfers a different reference image onto each part of a single
+object, for example a cheetah's head, a goat's torso, and a tiger's legs on one
+kangaroo. It works on FLUX without training: each part reads only its own
+reference, while the image tokens of all parts can still attend to each other,
+so the parts stay one connected object.
 
-From the Appendix:
+## Getting Started
 
-> We instead provide the per-configuration metric values, anonymized human
-> evaluation ratings and evaluation codebook, and the analysis scripts used to
-> compute the reported aggregate results.
+### 1. Environment setup
 
+```bash
+git clone https://github.com/IMJeongseon/RefRoute.git
+cd RefRoute
+
+conda create -n refroute python=3.12
+conda activate refroute
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
 ```
-release/
-  requirements.txt   pinned versions the reported runs used
-  benchmark/         the evaluation metadata: 60 configurations, image inventory
-  code/              the generation code
-  results/           metrics, ratings, runtime records, codebook, analysis scripts
+
+Accept the licenses of
+[FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev),
+[FLUX.1-Depth-dev](https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev),
+[FLUX.1-Canny-dev](https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev), and
+[FLUX.1-Redux-dev](https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev)
+on Hugging Face, then run `huggingface-cli login`. The weights download on first
+use. The paper's runs used one RTX PRO 6000 Blackwell with CUDA 12.8.
+
+### 2. Input preparation
+
+You need a structure image, three reference images, and an overlay: a copy of
+the structure image with each target part painted red, blue, or green. Edit the
+paths in `code/configs/preparation_example.yaml`, then run:
+
+```bash
+cd code
+python src/prepare.py --config configs/preparation_example.yaml
 ```
 
-Check the reported numbers from the released files with:
+This writes the target-part masks, the depth map, the reference foreground
+masks (BiRefNet), and `data/prepared/<structure>_v6/config.yaml`. Both scripts
+run from `code/`, and every path in a config is relative to it.
+
+### 3. Inference
+
+```bash
+python src/run.py --config data/prepared/<structure>_v6/config.yaml
+python src/run.py --config data/prepared/<structure>_v6/config.yaml --control-type canny
+```
+
+The output is written to `outputs/<structure>.png`. The defaults are the
+paper's settings: 1024x1024, 20 steps, seed 0, lambda 3, tau 0.3, guidance 10
+for depth and 30 for Canny. For a number of parts other than three, write the
+config directly with your own masks, following
+`code/configs/generation_example.yaml`.
+
+### 4. Reproducing the paper's numbers
+
+The per-configuration metrics, anonymized human ratings, and runtime
+measurements are in `results/`. These commands recompute the reported numbers
+from them, with only Python and NumPy:
 
 ```bash
 python results/analyze_metrics.py --all-runs --check
@@ -30,153 +77,27 @@ python results/verify_human_eval.py --check
 python results/verify_runtime.py --check
 ```
 
-These need only Python and NumPy.
+The benchmark images are not redistributed. `benchmark/` holds the metadata of
+the 60 configurations, and [docs/RELEASE.md](docs/RELEASE.md) describes what is
+and is not released. [code/CODE_MAP.md](code/CODE_MAP.md) explains each source
+file.
 
-## Generation code
+## Method
 
-`code/src/run.py` is RefRoute: reference encoding through FLUX.1-Redux-dev,
-foreground token selection on the Redux grid, the additive routing bias, and
-structure-conditioned sampling with FLUX.1-Depth-dev or FLUX.1-Canny-dev.
-`code/src/prepare.py` derives the control images and masks each run consumes.
-`code/experiments/generate_variants.py` is the driver that produced every
-reported run, over a plan file rebuilt from the metadata below;
-`code/src/run.py` is imported by it as a module. `code/CODE_MAP.md` says what
-every file does.
+<img src="./assets/method.jpg" width="100%" />
 
-The reported protocol is 1024x1024 output, 20 sampling steps, seed 0, guidance
-10 for Depth and 30 for Canny, reference scale lambda = 3, foreground-token
-threshold tau = 0.3, and no reference-token cap. It is recorded per
-configuration in the manifest, and once under its `reported_protocol` key.
+Foreground-selected Redux tokens from each reference are appended after the
+text tokens. The attention mask routes each target part to its own reference
+and leaves image-to-image attention open across parts. The same mask is used in
+every block and at every denoising step.
 
-## Running RefRoute on your own images
+## Citation
 
-You need a structure image, three reference images, and an RGB overlay: a copy
-of the structure image with each target part painted red, blue, or green.
-Install `requirements.txt`, then accept the FLUX.1-dev, FLUX.1-Depth-dev,
-FLUX.1-Canny-dev, and FLUX.1-Redux-dev licenses on Hugging Face and run
-`huggingface-cli login`; the weights download on first use. CUDA is required.
-
-Run both scripts from `code/`. They change into that directory on start, so
-every path in a config, and the `--config` path itself, is relative to `code/`.
-
-```bash
-cd code
-# edit the paths in configs/preparation_example.yaml, then:
-python src/prepare.py --config configs/preparation_example.yaml
-# writes data/prepared/<structure>_v6/config.yaml with masks and depth
-python src/run.py --config data/prepared/<structure>_v6/config.yaml
-# Canny instead of depth:
-python src/run.py --config data/prepared/<structure>_v6/config.yaml --control-type canny
+```bibtex
+@inproceedings{refroute2027,
+  title={RefRoute: Connectivity-Preserving Routing for Part-Level Multi-Reference Composition},
+  author={TODO},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year={2027}
+}
 ```
-
-`prepare.py` turns the overlay into target-part masks, computes the depth map,
-and makes reference foreground masks with BiRefNet unless `donor_mask` is given.
-The overlay route handles three parts. For any other number of parts, write the
-`run.py` config directly with your own masks, following
-`configs/generation_example.yaml`. Both routes default to the reported
-protocol. The output is written to `outputs/<structure>.png`.
-
-## Evaluation metadata
-
-`benchmark/manifest_60.json` gives, for each of the 60 configurations, the case
-identifier, domain, scene, the exact global prompt, the structure image and its
-SHA-256, the part-to-reference assignment with each reference image and its
-SHA-256, the routing order, the seed, and every sampling setting.
-`benchmark/image_inventory.csv` lists all 42 images with their digests and the
-roles each one plays.
-
-The metadata is complete rather than summary.
-`code/experiments/manifest_to_plan.py` turns it back into the plan file the
-generation code consumes:
-
-```bash
-python code/experiments/manifest_to_plan.py --out plan.json
-# wrote plan.json (60 configurations)
-```
-
-The emitted plan carries the reported protocol, so running the generation code
-against it reproduces those settings without further flags; Canny runs add
-`--guidance 30`.
-
-The same script has a `--verify` mode that compares such a reconstruction
-against an existing plan field by field. That is the check we ran against the
-plan used for the reported runs, and it reported no difference; it needs that
-original plan, so it is a statement about the released metadata rather than
-something this bundle lets you re-run.
-
-`results/analyze_metrics.py` also reads `benchmark/manifest_60.json`, for the
-structure image behind each case, which is the unit its bootstrap resamples.
-
-`benchmark/BENCHMARK.md` describes the composition, the canonical asset layout,
-and how the masks and control images were produced.
-
-## Metric values, ratings, and analysis
-
-| File | Contents |
-| --- | --- |
-| `results/per_case_metrics.csv` | Per-configuration values for the six metrics reported in the manuscript: 60 complete run groups, keyed by case ID and output name. |
-| `results/reported_run_map.json` | Mapping from manuscript comparisons to the corresponding run prefixes in the metric table. |
-| `results/human_ratings_public.csv` | 2,640 rows: one per (condition, rater, case, method). Raters appear only as `R1`--`R11`; method labels are the post-study decoded labels. |
-| `results/human_summary_public.json` | Aggregate endpoints of the human evaluation. |
-| `results/study_codebook_public.json` | Task definitions and the post-study A/B mapping, without private paths or identifiers. |
-| `results/analyze_metrics.py` | Means, paired per-configuration differences, and cluster-bootstrap intervals over `per_case_metrics.csv`. |
-| `results/verify_human_eval.py` | Recomputes every reported human endpoint from `human_ratings_public.csv` alone and diffs the result against `human_summary_public.json`. |
-| `results/runtime_matched.json`, `results/runtime_dreamrenderer.json` | Measurements underlying the reported runtime table. |
-| `results/verify_runtime.py` | Recomputes the runtime means and speedups and checks them against the manuscript values. |
-| `results/HUMAN_EVAL.md` | The task, the blinding and randomization, the rater panel, and the bootstrap settings. |
-
-The analysis and verification scripts read only released files:
-
-```bash
-python results/analyze_metrics.py --compare depth_refroute depth_dreamrenderer_fg
-python results/verify_human_eval.py --check
-python results/verify_runtime.py --check
-```
-
-`results/study_codebook_public.json` and `results/HUMAN_EVAL.md` are the
-evaluation codebook: the label definitions and the post-study A/B mapping for
-all 120 configuration--condition pairs, and the account of what the raters were
-shown and asked, how the blinding and the A/B side assignment were derived, and
-which bootstrap the intervals use.
-
-## Not included
-
-**The benchmark images and their derived masks**, as the paper states: the
-structure and reference images, the target-part and reference foreground masks,
-the annotation overlays, and the depth and Canny control images. Reproducing the
-benchmark requires obtaining the 42 images. Their collection URLs were not
-recorded and cannot be recovered, and the SHA-256 digests in
-`benchmark/image_inventory.csv` do not stand in for them: a digest cannot be
-searched back to an image, and re-downloading the same photograph will not
-reproduce the bytes of our hand-prepared file. What the digests do is pin the
-benchmark to 42 specific, immutable files, so it cannot be altered after the
-fact. `benchmark/BENCHMARK.md` sets out exactly what they can and cannot
-establish.
-
-**Rater login names**, the salted credential file, the raw per-rater sheets, and
-the private A/B codebooks. The released tables contain the decoded response
-fields needed for analysis, with raters replaced by `R1`--`R11`; they contain no
-login name, item hash, free-text note, credential, or private file path.
-
-**Model weights**, which are downloaded from their published sources.
-
-The metric implementations, baseline drivers, rating interface, benchmark mask
-parser, runtime measurement drivers, and other experiment runners are not part
-of this bundle. Their released outputs and the procedures needed to interpret
-them are provided here and in the manuscript.
-
-## Environment
-
-Python 3.12 and CUDA 12.8; the reported runs used a single RTX PRO 6000
-Blackwell. `requirements.txt` pins the versions those runs used; install the
-CUDA build of `torch` and `torchvision` from the PyTorch index. The analysis
-and verification scripts require only NumPy and run without a GPU or model
-weights.
-
-## Consent
-
-Raters were informed that their de-identified responses would be shared. The
-public human-study table contains anonymous rater indices, configurations, and
-the response fields used in the reported analysis, with no login name,
-free-text note, or other identifying field. Optional exploratory preference
-reasons are not released.
