@@ -2,12 +2,11 @@
 
 > **RefRoute: Connectivity-Preserving Routing for Part-Level Multi-Reference Composition**
 > <br>
-> TODO_AUTHORS
+> Jeongseon Cho, Youngjae Kim, and Jihoon Yang
 > <br>
-> TODO_AFFILIATIONS
+> Sogang University
 > <br>
 
-<a href="TODO_PAPER_URL"><img src="https://img.shields.io/badge/arXiv-TODO-A42C25.svg" alt="arXiv"></a>
 <img src="./assets/teaser.jpg" width="100%" />
 
 RefRoute transfers a different reference image onto each part of a single
@@ -96,7 +95,7 @@ every block and at every denoising step.
 ```bibtex
 @inproceedings{refroute2027,
   title={RefRoute: Connectivity-Preserving Routing for Part-Level Multi-Reference Composition},
-  author={TODO},
+  author={Cho, Jeongseon and Kim, Youngjae and Yang, Jihoon},
   booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year={2027}
 }
