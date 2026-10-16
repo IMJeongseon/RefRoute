@@ -1,0 +1,44 @@
+{
+  "protocol": "prepare = reference encoding, token selection, prompt encoding, bias construction and control-image load; denoise = sampling loop; total = both, measured end to end. redux_replay is the cost of the image loads and Redux calls that the baseline runs inside its own pipeline call, measured here so the baseline's reported total can be split.",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+  "steps": 20,
+  "repeats": 3,
+  "results": [
+    {
+      "setting": "K=1",
+      "case": "cheetah_r1_123",
+      "reference_count": 1,
+      "steps": 20,
+      "condition_tokens": 773,
+      "refroute_prepare_mean": 0.07771741400938481,
+      "refroute_denoise_mean": 11.5884655250314,
+      "refroute_total_mean": 11.666182939040786,
+      "refroute_total_std": 0.03997441688764106,
+      "redux_replay_mean": 0.024894810960783314
+    },
+    {
+      "setting": "K=3",
+      "case": "cheetah_r1_123",
+      "reference_count": 3,
+      "steps": 20,
+      "condition_tokens": 1159,
+      "refroute_prepare_mean": 0.1255625416718734,
+      "refroute_denoise_mean": 13.029781890004719,
+      "refroute_total_mean": 13.155344431676593,
+      "refroute_total_std": 0.06368338019156733,
+      "redux_replay_mean": 0.06879198900423944
+    },
+    {
+      "setting": "K=16",
+      "case": "dr_balls_16",
+      "reference_count": 16,
+      "steps": 20,
+      "condition_tokens": 3370,
+      "refroute_prepare_mean": 0.551857949331558,
+      "refroute_denoise_mean": 21.46637838232952,
+      "refroute_total_mean": 22.01823633166108,
+      "refroute_total_std": 0.04988465393419869,
+      "redux_replay_mean": 0.4662063586874865
+    }
+  ]
+}

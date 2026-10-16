@@ -1,0 +1,3450 @@
+{
+  "description": "The 60 evaluation configurations of the RefRoute benchmark. Image and mask fields are identifiers under the canonical layout described in benchmark/BENCHMARK.md, not redistributable assets.",
+  "case_count": 60,
+  "structure_image_count": 31,
+  "image_count": 42,
+  "reported_protocol": {
+    "steps": 20,
+    "guidance": {
+      "depth": 10.0,
+      "canny": 30.0
+    },
+    "seed": 0,
+    "reference_scale_lambda": 3.0,
+    "foreground_token_threshold_tau": 0.3,
+    "reference_token_budget": 0,
+    "resolution": [
+      1024,
+      1024
+    ],
+    "reference_count_K": 3
+  },
+  "routing_policy": {
+    "N=1": "all three target masks -> R_order[0]",
+    "N=2": "M_order[0] -> R_order[0]; remaining two masks -> R_order[1]",
+    "N=3": "M_order[i] -> R_order[i] for i=0,1,2"
+  },
+  "note": "settings.steps and settings.guidance are the values used for every reported run, applied by experiments/run_all.sh. plan_file_defaults records the unused defaults carried in the plan file.",
+  "cases": [
+    {
+      "case_id": "cheetah_r1_123",
+      "domain": "animals",
+      "scene": "snow",
+      "prompt": "A realistic photograph of an animal in a snow-covered landscape during snowfall.",
+      "structure_image": "animals/cheetah.png",
+      "structure_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/cheetah/target_01.png",
+          "reference_image": "animals/cow.png",
+          "reference_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cow.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/cheetah/target_02.png",
+          "reference_image": "animals/giraffe.png",
+          "reference_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/giraffe.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/cheetah/target_03.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cheetah_r2_132",
+      "domain": "animals",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of an animal in an autumn landscape with falling maple leaves.",
+      "structure_image": "animals/kangaroo.png",
+      "structure_image_sha256": "fb06991e4b25b038765192fff3d11001a923b26917d34482057507357a0a740c",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_02.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_03.png",
+          "reference_image": "animals/tiger.png",
+          "reference_image_sha256": "6115a846807c0bf8ac34ae7065d20ed984627ca3359250ba981df7b373d589c7",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/tiger.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cow_r1_213",
+      "domain": "animals",
+      "scene": "moss",
+      "prompt": "A realistic photograph of an animal in a moss-covered wetland.",
+      "structure_image": "animals/cow.png",
+      "structure_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/cow/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/cow/target_02.png",
+          "reference_image": "animals/giraffe.png",
+          "reference_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/giraffe.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/cow/target_03.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cow_r2_231",
+      "domain": "animals",
+      "scene": "desert",
+      "prompt": "A realistic photograph of an animal in a sandy desert.",
+      "structure_image": "animals/cow.png",
+      "structure_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/cow/target_01.png",
+          "reference_image": "animals/horse.png",
+          "reference_image_sha256": "98042b4a90404724d9a41cbfe8b6a0c38e4db00fa089ed083d3ef7a689a068c2",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/horse.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/cow/target_02.png",
+          "reference_image": "animals/kangaroo.png",
+          "reference_image_sha256": "fb06991e4b25b038765192fff3d11001a923b26917d34482057507357a0a740c",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/kangaroo.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/cow/target_03.png",
+          "reference_image": "animals/tiger.png",
+          "reference_image_sha256": "6115a846807c0bf8ac34ae7065d20ed984627ca3359250ba981df7b373d589c7",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/tiger.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "giraffe_r1_312",
+      "domain": "animals",
+      "scene": "snow",
+      "prompt": "A realistic photograph of an animal in a snow-covered landscape during snowfall.",
+      "structure_image": "animals/giraffe.png",
+      "structure_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_02.png",
+          "reference_image": "animals/cow.png",
+          "reference_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cow.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_03.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "giraffe_r2_321",
+      "domain": "animals",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of an animal in an autumn landscape with falling maple leaves.",
+      "structure_image": "animals/giraffe.png",
+      "structure_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_01.png",
+          "reference_image": "animals/horse.png",
+          "reference_image_sha256": "98042b4a90404724d9a41cbfe8b6a0c38e4db00fa089ed083d3ef7a689a068c2",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/horse.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_02.png",
+          "reference_image": "animals/kangaroo.png",
+          "reference_image_sha256": "fb06991e4b25b038765192fff3d11001a923b26917d34482057507357a0a740c",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/kangaroo.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/giraffe/target_03.png",
+          "reference_image": "animals/tiger.png",
+          "reference_image_sha256": "6115a846807c0bf8ac34ae7065d20ed984627ca3359250ba981df7b373d589c7",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/tiger.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "goat_r1_123",
+      "domain": "animals",
+      "scene": "moss",
+      "prompt": "A realistic photograph of an animal in a moss-covered wetland.",
+      "structure_image": "animals/goat.png",
+      "structure_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/goat/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/goat/target_02.png",
+          "reference_image": "animals/cow.png",
+          "reference_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cow.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/goat/target_03.png",
+          "reference_image": "animals/giraffe.png",
+          "reference_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/giraffe.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "goat_r2_132",
+      "domain": "animals",
+      "scene": "desert",
+      "prompt": "A realistic photograph of an animal in a sandy desert.",
+      "structure_image": "animals/kangaroo.png",
+      "structure_image_sha256": "fb06991e4b25b038765192fff3d11001a923b26917d34482057507357a0a740c",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_02.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/kangaroo/target_03.png",
+          "reference_image": "animals/tiger.png",
+          "reference_image_sha256": "6115a846807c0bf8ac34ae7065d20ed984627ca3359250ba981df7b373d589c7",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/tiger.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "horse_r1_213",
+      "domain": "animals",
+      "scene": "snow",
+      "prompt": "A realistic photograph of an animal in a snow-covered landscape during snowfall.",
+      "structure_image": "animals/horse.png",
+      "structure_image_sha256": "98042b4a90404724d9a41cbfe8b6a0c38e4db00fa089ed083d3ef7a689a068c2",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/horse/target_01.png",
+          "reference_image": "animals/cheetah.png",
+          "reference_image_sha256": "58f00b49a4cf935d79b3b44d697e7da4bc8a85cb2205bfe611ca8f87707346d4",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cheetah.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/horse/target_02.png",
+          "reference_image": "animals/cow.png",
+          "reference_image_sha256": "037dc636d0e3bedabdd5e633d6fa40334338c649a9731b2cfbe39d72aa7b9fca",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/cow.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/horse/target_03.png",
+          "reference_image": "animals/giraffe.png",
+          "reference_image_sha256": "df4e368abb0db3b3b2f71f74a49e7b962034509edcf29559a56794b327722be8",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/giraffe.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "horse_r2_231",
+      "domain": "animals",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of an animal in an autumn landscape with falling maple leaves.",
+      "structure_image": "animals/horse.png",
+      "structure_image_sha256": "98042b4a90404724d9a41cbfe8b6a0c38e4db00fa089ed083d3ef7a689a068c2",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_neck",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/animals/horse/target_01.png",
+          "reference_image": "animals/goat.png",
+          "reference_image_sha256": "f0ad7a2d508fd08e9e55ebd2bbad7182ac117487055c8d4cc4a48db2650bbe14",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/goat.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/animals/horse/target_02.png",
+          "reference_image": "animals/kangaroo.png",
+          "reference_image_sha256": "fb06991e4b25b038765192fff3d11001a923b26917d34482057507357a0a740c",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/kangaroo.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "limbs_tail",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/animals/horse/target_03.png",
+          "reference_image": "animals/tiger.png",
+          "reference_image_sha256": "6115a846807c0bf8ac34ae7065d20ed984627ca3359250ba981df7b373d589c7",
+          "reference_foreground_mask": "prepared/masking/foreground/animals/tiger.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird0_r1_312",
+      "domain": "birds",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a bird in a moss-covered wetland.",
+      "structure_image": "birds/bird0.png",
+      "structure_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird0/target_01.png",
+          "reference_image": "birds/bird1.png",
+          "reference_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird1.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird0/target_02.png",
+          "reference_image": "birds/bird2.png",
+          "reference_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird0/target_03.png",
+          "reference_image": "birds/bird3.png",
+          "reference_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird0_r2_321",
+      "domain": "birds",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a bird in a sandy desert.",
+      "structure_image": "birds/bird0.png",
+      "structure_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird0/target_01.png",
+          "reference_image": "birds/bird4.png",
+          "reference_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird0/target_02.png",
+          "reference_image": "birds/bird5.png",
+          "reference_image_sha256": "1b8eeb2a4df3ddfc0bcde70172c57bbf09dc810830252cd76e0f74e37951419c",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird0/target_03.png",
+          "reference_image": "birds/bird6.png",
+          "reference_image_sha256": "77b60b3f857b1ed9a2f3486a3f6485cfed1e4bc16b1aefd9d11331e90736df88",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird1_r1_123",
+      "domain": "birds",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a bird in a snow-covered landscape during snowfall.",
+      "structure_image": "birds/bird1.png",
+      "structure_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird1/target_01.png",
+          "reference_image": "birds/bird0.png",
+          "reference_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird1/target_02.png",
+          "reference_image": "birds/bird2.png",
+          "reference_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird1/target_03.png",
+          "reference_image": "birds/bird3.png",
+          "reference_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird1_r2_132",
+      "domain": "birds",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a bird in an autumn landscape with falling maple leaves.",
+      "structure_image": "birds/bird1.png",
+      "structure_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird1/target_01.png",
+          "reference_image": "birds/bird4.png",
+          "reference_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird1/target_02.png",
+          "reference_image": "birds/bird5.png",
+          "reference_image_sha256": "1b8eeb2a4df3ddfc0bcde70172c57bbf09dc810830252cd76e0f74e37951419c",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird1/target_03.png",
+          "reference_image": "birds/bird6.png",
+          "reference_image_sha256": "77b60b3f857b1ed9a2f3486a3f6485cfed1e4bc16b1aefd9d11331e90736df88",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird2_r1_213",
+      "domain": "birds",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a bird in a moss-covered wetland.",
+      "structure_image": "birds/bird2.png",
+      "structure_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird2/target_01.png",
+          "reference_image": "birds/bird0.png",
+          "reference_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird2/target_02.png",
+          "reference_image": "birds/bird1.png",
+          "reference_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird2/target_03.png",
+          "reference_image": "birds/bird3.png",
+          "reference_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird2_r2_231",
+      "domain": "birds",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a bird in a sandy desert.",
+      "structure_image": "birds/bird2.png",
+      "structure_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird2/target_01.png",
+          "reference_image": "birds/bird4.png",
+          "reference_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird2/target_02.png",
+          "reference_image": "birds/bird5.png",
+          "reference_image_sha256": "1b8eeb2a4df3ddfc0bcde70172c57bbf09dc810830252cd76e0f74e37951419c",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird2/target_03.png",
+          "reference_image": "birds/bird6.png",
+          "reference_image_sha256": "77b60b3f857b1ed9a2f3486a3f6485cfed1e4bc16b1aefd9d11331e90736df88",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird3_r1_312",
+      "domain": "birds",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a bird in a snow-covered landscape during snowfall.",
+      "structure_image": "birds/bird3.png",
+      "structure_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird3/target_01.png",
+          "reference_image": "birds/bird0.png",
+          "reference_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird3/target_02.png",
+          "reference_image": "birds/bird1.png",
+          "reference_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird3/target_03.png",
+          "reference_image": "birds/bird2.png",
+          "reference_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird3_r2_321",
+      "domain": "birds",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a bird in an autumn landscape with falling maple leaves.",
+      "structure_image": "birds/bird3.png",
+      "structure_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird3/target_01.png",
+          "reference_image": "birds/bird4.png",
+          "reference_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird3/target_02.png",
+          "reference_image": "birds/bird5.png",
+          "reference_image_sha256": "1b8eeb2a4df3ddfc0bcde70172c57bbf09dc810830252cd76e0f74e37951419c",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird3/target_03.png",
+          "reference_image": "birds/bird6.png",
+          "reference_image_sha256": "77b60b3f857b1ed9a2f3486a3f6485cfed1e4bc16b1aefd9d11331e90736df88",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird4_r1_123",
+      "domain": "birds",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a bird in a moss-covered wetland.",
+      "structure_image": "birds/bird4.png",
+      "structure_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird4/target_01.png",
+          "reference_image": "birds/bird0.png",
+          "reference_image_sha256": "9bc7e3cc526e9910906413e86c6ef899d3ca733c9f44dadf7e246a6068a2a450",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird4/target_02.png",
+          "reference_image": "birds/bird1.png",
+          "reference_image_sha256": "e85f4dfeeeb706d37dde2d509fd74c42d6bed68fcf32f000ecb1146d077dd488",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird4/target_03.png",
+          "reference_image": "birds/bird2.png",
+          "reference_image_sha256": "7afda97b1ce53acefda885e540315120bc3bfd03cdd76d97299d6c3a5a76f24d",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "bird4_r2_132",
+      "domain": "birds",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a bird in a sandy desert.",
+      "structure_image": "birds/bird4.png",
+      "structure_image_sha256": "7e04fe84363da03b154816975732eb16a626b3f7e22ebc8104c0b718edd0c819",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "head_beak",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/birds/bird4/target_01.png",
+          "reference_image": "birds/bird3.png",
+          "reference_image_sha256": "3e8e885e1b8fd7ddf98fa6fa0559c512d78c088abffe927d6ac8fa46017f6a40",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird3.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "torso_tail_legs",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/birds/bird4/target_02.png",
+          "reference_image": "birds/bird5.png",
+          "reference_image_sha256": "1b8eeb2a4df3ddfc0bcde70172c57bbf09dc810830252cd76e0f74e37951419c",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wing",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/birds/bird4/target_03.png",
+          "reference_image": "birds/bird6.png",
+          "reference_image_sha256": "77b60b3f857b1ed9a2f3486a3f6485cfed1e4bc16b1aefd9d11331e90736df88",
+          "reference_foreground_mask": "prepared/masking/foreground/birds/bird6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "basil_r1_213",
+      "domain": "building",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a building in a snow-covered landscape during snowfall.",
+      "structure_image": "building/basil.jpg",
+      "structure_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/basil/target_01.png",
+          "reference_image": "building/brownstone.jpg",
+          "reference_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+          "reference_foreground_mask": "prepared/masking/foreground/building/brownstone.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/basil/target_02.png",
+          "reference_image": "building/colosseum.png",
+          "reference_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+          "reference_foreground_mask": "prepared/masking/foreground/building/colosseum.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/basil/target_03.png",
+          "reference_image": "building/house-modern.jpg",
+          "reference_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-modern.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "basil_r2_231",
+      "domain": "building",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a building in an autumn landscape with falling maple leaves.",
+      "structure_image": "building/basil.jpg",
+      "structure_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/basil/target_01.png",
+          "reference_image": "building/house-square.png",
+          "reference_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-square.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/basil/target_02.png",
+          "reference_image": "building/house-wooden.jpg",
+          "reference_image_sha256": "48ec83ed138aad57b296dbfce9f5c288050de4ac54e44a1cb55d361a4cc796a3",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-wooden.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/basil/target_03.png",
+          "reference_image": "building/le_sacre_coeur.jpg",
+          "reference_image_sha256": "799962128b25345984f6eb0be9ec80f69e492b22109cb797fbf503de99a3db3b",
+          "reference_foreground_mask": "prepared/masking/foreground/building/le_sacre_coeur.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "brownstone_r1_312",
+      "domain": "building",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a residential building in a moss-covered wetland.",
+      "structure_image": "building/brownstone.jpg",
+      "structure_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/brownstone/target_01.png",
+          "reference_image": "building/basil.jpg",
+          "reference_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+          "reference_foreground_mask": "prepared/masking/foreground/building/basil.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/brownstone/target_02.png",
+          "reference_image": "building/colosseum.png",
+          "reference_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+          "reference_foreground_mask": "prepared/masking/foreground/building/colosseum.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/brownstone/target_03.png",
+          "reference_image": "building/house-modern.jpg",
+          "reference_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-modern.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "brownstone_r2_321",
+      "domain": "building",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a residential building in a sandy desert.",
+      "structure_image": "building/brownstone.jpg",
+      "structure_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/brownstone/target_01.png",
+          "reference_image": "building/house-square.png",
+          "reference_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-square.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/brownstone/target_02.png",
+          "reference_image": "building/house-wooden.jpg",
+          "reference_image_sha256": "48ec83ed138aad57b296dbfce9f5c288050de4ac54e44a1cb55d361a4cc796a3",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-wooden.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/brownstone/target_03.png",
+          "reference_image": "building/le_sacre_coeur.jpg",
+          "reference_image_sha256": "799962128b25345984f6eb0be9ec80f69e492b22109cb797fbf503de99a3db3b",
+          "reference_foreground_mask": "prepared/masking/foreground/building/le_sacre_coeur.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "colosseum_r1_123",
+      "domain": "building",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a building in a snow-covered landscape during snowfall.",
+      "structure_image": "building/colosseum.png",
+      "structure_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/colosseum/target_01.png",
+          "reference_image": "building/basil.jpg",
+          "reference_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+          "reference_foreground_mask": "prepared/masking/foreground/building/basil.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/colosseum/target_02.png",
+          "reference_image": "building/brownstone.jpg",
+          "reference_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+          "reference_foreground_mask": "prepared/masking/foreground/building/brownstone.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/colosseum/target_03.png",
+          "reference_image": "building/house-modern.jpg",
+          "reference_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-modern.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "colosseum_r2_132",
+      "domain": "building",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a building in an autumn landscape with falling maple leaves.",
+      "structure_image": "building/colosseum.png",
+      "structure_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/colosseum/target_01.png",
+          "reference_image": "building/house-square.png",
+          "reference_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-square.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/colosseum/target_02.png",
+          "reference_image": "building/house-wooden.jpg",
+          "reference_image_sha256": "48ec83ed138aad57b296dbfce9f5c288050de4ac54e44a1cb55d361a4cc796a3",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-wooden.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/colosseum/target_03.png",
+          "reference_image": "building/le_sacre_coeur.jpg",
+          "reference_image_sha256": "799962128b25345984f6eb0be9ec80f69e492b22109cb797fbf503de99a3db3b",
+          "reference_foreground_mask": "prepared/masking/foreground/building/le_sacre_coeur.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "house-modern_r1_213",
+      "domain": "building",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a house in a moss-covered wetland.",
+      "structure_image": "building/house-modern.jpg",
+      "structure_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/house-modern/target_01.png",
+          "reference_image": "building/basil.jpg",
+          "reference_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+          "reference_foreground_mask": "prepared/masking/foreground/building/basil.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/house-modern/target_02.png",
+          "reference_image": "building/brownstone.jpg",
+          "reference_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+          "reference_foreground_mask": "prepared/masking/foreground/building/brownstone.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/house-modern/target_03.png",
+          "reference_image": "building/colosseum.png",
+          "reference_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+          "reference_foreground_mask": "prepared/masking/foreground/building/colosseum.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "house-modern_r2_231",
+      "domain": "building",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a house in a sandy desert.",
+      "structure_image": "building/house-modern.jpg",
+      "structure_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/house-modern/target_01.png",
+          "reference_image": "building/house-square.png",
+          "reference_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-square.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/house-modern/target_02.png",
+          "reference_image": "building/house-wooden.jpg",
+          "reference_image_sha256": "48ec83ed138aad57b296dbfce9f5c288050de4ac54e44a1cb55d361a4cc796a3",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-wooden.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/house-modern/target_03.png",
+          "reference_image": "building/le_sacre_coeur.jpg",
+          "reference_image_sha256": "799962128b25345984f6eb0be9ec80f69e492b22109cb797fbf503de99a3db3b",
+          "reference_foreground_mask": "prepared/masking/foreground/building/le_sacre_coeur.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "house-square_r1_312",
+      "domain": "building",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a small house in a snow-covered landscape during snowfall.",
+      "structure_image": "building/house-square.png",
+      "structure_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/house-square/target_01.png",
+          "reference_image": "building/basil.jpg",
+          "reference_image_sha256": "c22e8bcdf3edfa908a8ab9dd17a8e6f65c3f049965dc5487ff6f0d23d79827aa",
+          "reference_foreground_mask": "prepared/masking/foreground/building/basil.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/house-square/target_02.png",
+          "reference_image": "building/brownstone.jpg",
+          "reference_image_sha256": "8c2f21b0336db25ddd232d5702b4dfd34551c545562598d9ab166a523abbedc4",
+          "reference_foreground_mask": "prepared/masking/foreground/building/brownstone.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/house-square/target_03.png",
+          "reference_image": "building/colosseum.png",
+          "reference_image_sha256": "c7ef90edec7facbe259d0c6a607a9d625d708671f0b1ea5360d0a6a895b16b13",
+          "reference_foreground_mask": "prepared/masking/foreground/building/colosseum.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "house-square_r2_321",
+      "domain": "building",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a small house in an autumn landscape with falling maple leaves.",
+      "structure_image": "building/house-square.png",
+      "structure_image_sha256": "1466b2571c9e6e63fc8d4b53638a1c1d9a2b130b5ee50ea2450d36cbed668fbc",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "red_region",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/building/house-square/target_01.png",
+          "reference_image": "building/house-modern.jpg",
+          "reference_image_sha256": "46b1191760d1e5e17b2aeb2f215ce6d5fc03fcea545ffaf21b5591acdc1033fc",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-modern.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "blue_region",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/building/house-square/target_02.png",
+          "reference_image": "building/house-wooden.jpg",
+          "reference_image_sha256": "48ec83ed138aad57b296dbfce9f5c288050de4ac54e44a1cb55d361a4cc796a3",
+          "reference_foreground_mask": "prepared/masking/foreground/building/house-wooden.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "green_region",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/building/house-square/target_03.png",
+          "reference_image": "building/le_sacre_coeur.jpg",
+          "reference_image_sha256": "799962128b25345984f6eb0be9ec80f69e492b22109cb797fbf503de99a3db3b",
+          "reference_foreground_mask": "prepared/masking/foreground/building/le_sacre_coeur.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly0_r1_123",
+      "domain": "butterflies",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a butterfly in a moss-covered wetland.",
+      "structure_image": "butterflies/butterfly0.png",
+      "structure_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_01.png",
+          "reference_image": "butterflies/butterfly1.png",
+          "reference_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly1.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_02.png",
+          "reference_image": "butterflies/butterfly2.png",
+          "reference_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_03.png",
+          "reference_image": "butterflies/butterfly3.png",
+          "reference_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly0_r2_132",
+      "domain": "butterflies",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a butterfly in a sandy desert.",
+      "structure_image": "butterflies/butterfly0.png",
+      "structure_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_01.png",
+          "reference_image": "butterflies/butterfly4.png",
+          "reference_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_02.png",
+          "reference_image": "butterflies/butterfly5.png",
+          "reference_image_sha256": "b77a61d1493ac4601250880462d09d7c389e09df2f5c5ebb62731c3a920bab73",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly0/target_03.png",
+          "reference_image": "butterflies/butterfly6.png",
+          "reference_image_sha256": "093324f19bb8e9cef380916bb560eca9dff666021e3d3f99035d9ccaf2c22c0f",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly1_r1_213",
+      "domain": "butterflies",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a butterfly in a snow-covered landscape during snowfall.",
+      "structure_image": "butterflies/butterfly1.png",
+      "structure_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_01.png",
+          "reference_image": "butterflies/butterfly0.png",
+          "reference_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_02.png",
+          "reference_image": "butterflies/butterfly2.png",
+          "reference_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_03.png",
+          "reference_image": "butterflies/butterfly3.png",
+          "reference_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly1_r2_231",
+      "domain": "butterflies",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a butterfly in an autumn landscape with falling maple leaves.",
+      "structure_image": "butterflies/butterfly1.png",
+      "structure_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_01.png",
+          "reference_image": "butterflies/butterfly4.png",
+          "reference_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_02.png",
+          "reference_image": "butterflies/butterfly5.png",
+          "reference_image_sha256": "b77a61d1493ac4601250880462d09d7c389e09df2f5c5ebb62731c3a920bab73",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly1/target_03.png",
+          "reference_image": "butterflies/butterfly6.png",
+          "reference_image_sha256": "093324f19bb8e9cef380916bb560eca9dff666021e3d3f99035d9ccaf2c22c0f",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly2_r1_312",
+      "domain": "butterflies",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a butterfly in a moss-covered wetland.",
+      "structure_image": "butterflies/butterfly2.png",
+      "structure_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_01.png",
+          "reference_image": "butterflies/butterfly0.png",
+          "reference_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_02.png",
+          "reference_image": "butterflies/butterfly1.png",
+          "reference_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_03.png",
+          "reference_image": "butterflies/butterfly3.png",
+          "reference_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly2_r2_321",
+      "domain": "butterflies",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a butterfly in a sandy desert.",
+      "structure_image": "butterflies/butterfly2.png",
+      "structure_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_01.png",
+          "reference_image": "butterflies/butterfly4.png",
+          "reference_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_02.png",
+          "reference_image": "butterflies/butterfly5.png",
+          "reference_image_sha256": "b77a61d1493ac4601250880462d09d7c389e09df2f5c5ebb62731c3a920bab73",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly2/target_03.png",
+          "reference_image": "butterflies/butterfly6.png",
+          "reference_image_sha256": "093324f19bb8e9cef380916bb560eca9dff666021e3d3f99035d9ccaf2c22c0f",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly3_r1_123",
+      "domain": "butterflies",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a butterfly in a snow-covered landscape during snowfall.",
+      "structure_image": "butterflies/butterfly3.png",
+      "structure_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_01.png",
+          "reference_image": "butterflies/butterfly0.png",
+          "reference_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_02.png",
+          "reference_image": "butterflies/butterfly1.png",
+          "reference_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_03.png",
+          "reference_image": "butterflies/butterfly2.png",
+          "reference_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly3_r2_132",
+      "domain": "butterflies",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a butterfly in an autumn landscape with falling maple leaves.",
+      "structure_image": "butterflies/butterfly3.png",
+      "structure_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_01.png",
+          "reference_image": "butterflies/butterfly4.png",
+          "reference_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_02.png",
+          "reference_image": "butterflies/butterfly5.png",
+          "reference_image_sha256": "b77a61d1493ac4601250880462d09d7c389e09df2f5c5ebb62731c3a920bab73",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly3/target_03.png",
+          "reference_image": "butterflies/butterfly6.png",
+          "reference_image_sha256": "093324f19bb8e9cef380916bb560eca9dff666021e3d3f99035d9ccaf2c22c0f",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly4_r1_213",
+      "domain": "butterflies",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a butterfly in a moss-covered wetland.",
+      "structure_image": "butterflies/butterfly4.png",
+      "structure_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_01.png",
+          "reference_image": "butterflies/butterfly0.png",
+          "reference_image_sha256": "028c69a8bfdb519566570da3869c8f67d9159f3f7c7cac37d20f0b7ff39e1a2e",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_02.png",
+          "reference_image": "butterflies/butterfly1.png",
+          "reference_image_sha256": "d3ee865271f50f1f0b89765d276cb03156195fa60183f3deb65527ffcec5a285",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_03.png",
+          "reference_image": "butterflies/butterfly2.png",
+          "reference_image_sha256": "983a676d07c510ac1f2a58dff8e0801b485fb2965a61dddc6b8a62fcef15f4a1",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "butterfly4_r2_231",
+      "domain": "butterflies",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a butterfly in a sandy desert.",
+      "structure_image": "butterflies/butterfly4.png",
+      "structure_image_sha256": "9ceee46273f0f8ab2dd567f7f79add7c9b5e3034dda53de73ff697b1cf4d093c",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "forewing_left",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_01.png",
+          "reference_image": "butterflies/butterfly3.png",
+          "reference_image_sha256": "3d1daf00f48e69dfc64c24c081f35bf634aaa6fd9df982166034d4672676a5b3",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly3.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "forewing_right",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_02.png",
+          "reference_image": "butterflies/butterfly5.png",
+          "reference_image_sha256": "b77a61d1493ac4601250880462d09d7c389e09df2f5c5ebb62731c3a920bab73",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "hindwings",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/butterflies/butterfly4/target_03.png",
+          "reference_image": "butterflies/butterfly6.png",
+          "reference_image_sha256": "093324f19bb8e9cef380916bb560eca9dff666021e3d3f99035d9ccaf2c22c0f",
+          "reference_foreground_mask": "prepared/masking/foreground/butterflies/butterfly6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake0_r1_312",
+      "domain": "cakes",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a cake in a snow-covered landscape during snowfall.",
+      "structure_image": "cakes/cake0.png",
+      "structure_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_01.png",
+          "reference_image": "cakes/cake1.png",
+          "reference_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake1.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_02.png",
+          "reference_image": "cakes/cake2.png",
+          "reference_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_03.png",
+          "reference_image": "cakes/cake3.png",
+          "reference_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake0_r2_321",
+      "domain": "cakes",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a cake in an autumn landscape with falling maple leaves.",
+      "structure_image": "cakes/cake0.png",
+      "structure_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_01.png",
+          "reference_image": "cakes/cake4.png",
+          "reference_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_02.png",
+          "reference_image": "cakes/cake6.png",
+          "reference_image_sha256": "84a81e64f69bb218dd80afc10b1af48eff26c735152169ec6ad44115b3de7792",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake6.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake0/target_03.png",
+          "reference_image": "cakes/cake7.png",
+          "reference_image_sha256": "019d8e78aabb864ebaa2489f5242f228557ba85fc060577190a2a8ca3072d640",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake7.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake1_r1_123",
+      "domain": "cakes",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a pastry in a moss-covered wetland.",
+      "structure_image": "cakes/cake1.png",
+      "structure_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_01.png",
+          "reference_image": "cakes/cake0.png",
+          "reference_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_02.png",
+          "reference_image": "cakes/cake2.png",
+          "reference_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_03.png",
+          "reference_image": "cakes/cake3.png",
+          "reference_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake1_r2_132",
+      "domain": "cakes",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a pastry in a sandy desert.",
+      "structure_image": "cakes/cake1.png",
+      "structure_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_01.png",
+          "reference_image": "cakes/cake4.png",
+          "reference_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_02.png",
+          "reference_image": "cakes/cake6.png",
+          "reference_image_sha256": "84a81e64f69bb218dd80afc10b1af48eff26c735152169ec6ad44115b3de7792",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake6.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake1/target_03.png",
+          "reference_image": "cakes/cake7.png",
+          "reference_image_sha256": "019d8e78aabb864ebaa2489f5242f228557ba85fc060577190a2a8ca3072d640",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake7.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake2_r1_213",
+      "domain": "cakes",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a cupcake in a snow-covered landscape during snowfall.",
+      "structure_image": "cakes/cake2.png",
+      "structure_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_01.png",
+          "reference_image": "cakes/cake0.png",
+          "reference_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_02.png",
+          "reference_image": "cakes/cake1.png",
+          "reference_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_03.png",
+          "reference_image": "cakes/cake3.png",
+          "reference_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake2_r2_231",
+      "domain": "cakes",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a cupcake in an autumn landscape with falling maple leaves.",
+      "structure_image": "cakes/cake2.png",
+      "structure_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_01.png",
+          "reference_image": "cakes/cake4.png",
+          "reference_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_02.png",
+          "reference_image": "cakes/cake6.png",
+          "reference_image_sha256": "84a81e64f69bb218dd80afc10b1af48eff26c735152169ec6ad44115b3de7792",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake6.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake2/target_03.png",
+          "reference_image": "cakes/cake7.png",
+          "reference_image_sha256": "019d8e78aabb864ebaa2489f5242f228557ba85fc060577190a2a8ca3072d640",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake7.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake3_r1_312",
+      "domain": "cakes",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a slice of cake in a moss-covered wetland.",
+      "structure_image": "cakes/cake3.png",
+      "structure_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_01.png",
+          "reference_image": "cakes/cake0.png",
+          "reference_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_02.png",
+          "reference_image": "cakes/cake1.png",
+          "reference_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_03.png",
+          "reference_image": "cakes/cake2.png",
+          "reference_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake3_r2_321",
+      "domain": "cakes",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a slice of cake in a sandy desert.",
+      "structure_image": "cakes/cake3.png",
+      "structure_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_01.png",
+          "reference_image": "cakes/cake4.png",
+          "reference_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_02.png",
+          "reference_image": "cakes/cake6.png",
+          "reference_image_sha256": "84a81e64f69bb218dd80afc10b1af48eff26c735152169ec6ad44115b3de7792",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake6.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake3/target_03.png",
+          "reference_image": "cakes/cake7.png",
+          "reference_image_sha256": "019d8e78aabb864ebaa2489f5242f228557ba85fc060577190a2a8ca3072d640",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake7.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake4_r1_123",
+      "domain": "cakes",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a slice of cake in a snow-covered landscape during snowfall.",
+      "structure_image": "cakes/cake4.png",
+      "structure_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_01.png",
+          "reference_image": "cakes/cake0.png",
+          "reference_image_sha256": "bc596f1f1319b02bedb9e34dc2adc5c74dd36d00d3a5328abbab961e77b50ad3",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_02.png",
+          "reference_image": "cakes/cake1.png",
+          "reference_image_sha256": "eccc8038d578a3146b1e01e0bb8d3a3310681398c729a919b1ea7dbe44e70fe6",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_03.png",
+          "reference_image": "cakes/cake2.png",
+          "reference_image_sha256": "72761cd0fc565a33678586f98bf0dd382c2e6b62c8f93e0460ab12aa9b60bbef",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "cake4_r2_132",
+      "domain": "cakes",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a slice of cake in an autumn landscape with falling maple leaves.",
+      "structure_image": "cakes/cake4.png",
+      "structure_image_sha256": "57840c4c2ee57fdfc469b802550e4eee2c8fa06bb6319363e1f3bad204ba62e1",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "topping",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_01.png",
+          "reference_image": "cakes/cake3.png",
+          "reference_image_sha256": "b7a003469d30e6602e16d43876a73c81c0448dcc3e9b49a976695cac3fb9e222",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake3.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cake_layers",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_02.png",
+          "reference_image": "cakes/cake6.png",
+          "reference_image_sha256": "84a81e64f69bb218dd80afc10b1af48eff26c735152169ec6ad44115b3de7792",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake6.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "base",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cakes/cake4/target_03.png",
+          "reference_image": "cakes/cake7.png",
+          "reference_image_sha256": "019d8e78aabb864ebaa2489f5242f228557ba85fc060577190a2a8ca3072d640",
+          "reference_foreground_mask": "prepared/masking/foreground/cakes/cake7.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car0_r1_213",
+      "domain": "cars",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a compact car in a moss-covered wetland.",
+      "structure_image": "cars/car0.png",
+      "structure_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car0/target_01.png",
+          "reference_image": "cars/car1.png",
+          "reference_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car1.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car0/target_02.png",
+          "reference_image": "cars/car2.png",
+          "reference_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car0/target_03.png",
+          "reference_image": "cars/car3.png",
+          "reference_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car0_r2_231",
+      "domain": "cars",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a compact car in a sandy desert.",
+      "structure_image": "cars/car0.png",
+      "structure_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car0/target_01.png",
+          "reference_image": "cars/car4.png",
+          "reference_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car0/target_02.png",
+          "reference_image": "cars/car5.png",
+          "reference_image_sha256": "66ee91e0b64453b498f9f48b80177e30a337e820da593beebecc730b82664465",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car0/target_03.png",
+          "reference_image": "cars/car6.png",
+          "reference_image_sha256": "bc9f9f31d72367f783371aafa7c6de98a5064846dcdef2de614f43d5400c2f23",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car1_r1_312",
+      "domain": "cars",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a sedan in a snow-covered landscape during snowfall.",
+      "structure_image": "cars/car1.png",
+      "structure_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car1/target_01.png",
+          "reference_image": "cars/car0.png",
+          "reference_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car1/target_02.png",
+          "reference_image": "cars/car2.png",
+          "reference_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car2.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car1/target_03.png",
+          "reference_image": "cars/car3.png",
+          "reference_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car1_r2_321",
+      "domain": "cars",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a sedan in an autumn landscape with falling maple leaves.",
+      "structure_image": "cars/car1.png",
+      "structure_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car1/target_01.png",
+          "reference_image": "cars/car4.png",
+          "reference_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car1/target_02.png",
+          "reference_image": "cars/car5.png",
+          "reference_image_sha256": "66ee91e0b64453b498f9f48b80177e30a337e820da593beebecc730b82664465",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car1/target_03.png",
+          "reference_image": "cars/car6.png",
+          "reference_image_sha256": "bc9f9f31d72367f783371aafa7c6de98a5064846dcdef2de614f43d5400c2f23",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car2_r1_123",
+      "domain": "cars",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a compact car in a moss-covered wetland.",
+      "structure_image": "cars/car2.png",
+      "structure_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+      "routing_order": [
+        0,
+        1,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car2/target_01.png",
+          "reference_image": "cars/car0.png",
+          "reference_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car2/target_02.png",
+          "reference_image": "cars/car1.png",
+          "reference_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car2/target_03.png",
+          "reference_image": "cars/car3.png",
+          "reference_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car3.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car2_r2_132",
+      "domain": "cars",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a compact car in a sandy desert.",
+      "structure_image": "cars/car2.png",
+      "structure_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+      "routing_order": [
+        0,
+        2,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car2/target_01.png",
+          "reference_image": "cars/car4.png",
+          "reference_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car2/target_02.png",
+          "reference_image": "cars/car5.png",
+          "reference_image_sha256": "66ee91e0b64453b498f9f48b80177e30a337e820da593beebecc730b82664465",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car2/target_03.png",
+          "reference_image": "cars/car6.png",
+          "reference_image_sha256": "bc9f9f31d72367f783371aafa7c6de98a5064846dcdef2de614f43d5400c2f23",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car3_r1_213",
+      "domain": "cars",
+      "scene": "snow",
+      "prompt": "A realistic photograph of a pickup truck in a snow-covered landscape during snowfall.",
+      "structure_image": "cars/car3.png",
+      "structure_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+      "routing_order": [
+        1,
+        0,
+        2
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car3/target_01.png",
+          "reference_image": "cars/car0.png",
+          "reference_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car3/target_02.png",
+          "reference_image": "cars/car1.png",
+          "reference_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car3/target_03.png",
+          "reference_image": "cars/car2.png",
+          "reference_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car3_r2_231",
+      "domain": "cars",
+      "scene": "autumn",
+      "prompt": "A realistic photograph of a pickup truck in an autumn landscape with falling maple leaves.",
+      "structure_image": "cars/car3.png",
+      "structure_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+      "routing_order": [
+        1,
+        2,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car3/target_01.png",
+          "reference_image": "cars/car4.png",
+          "reference_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car4.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car3/target_02.png",
+          "reference_image": "cars/car5.png",
+          "reference_image_sha256": "66ee91e0b64453b498f9f48b80177e30a337e820da593beebecc730b82664465",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car3/target_03.png",
+          "reference_image": "cars/car6.png",
+          "reference_image_sha256": "bc9f9f31d72367f783371aafa7c6de98a5064846dcdef2de614f43d5400c2f23",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car4_r1_312",
+      "domain": "cars",
+      "scene": "moss",
+      "prompt": "A realistic photograph of a hatchback in a moss-covered wetland.",
+      "structure_image": "cars/car4.png",
+      "structure_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+      "routing_order": [
+        2,
+        0,
+        1
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car4/target_01.png",
+          "reference_image": "cars/car0.png",
+          "reference_image_sha256": "21982c1c009ee6fc7c33dd9fef5819a777a70832d88006397c9138cc856a190a",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car0.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car4/target_02.png",
+          "reference_image": "cars/car1.png",
+          "reference_image_sha256": "21057370c83738bf9f1aab12b6f5ce2c90eafb2fc57f1b651eedc1dca187c18f",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car1.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car4/target_03.png",
+          "reference_image": "cars/car2.png",
+          "reference_image_sha256": "7d86c65eca8f91b9a19e6e59cc49f6705903cb621f07c5026e3d3b01f1382085",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car2.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    },
+    {
+      "case_id": "car4_r2_321",
+      "domain": "cars",
+      "scene": "desert",
+      "prompt": "A realistic photograph of a hatchback in a sandy desert.",
+      "structure_image": "cars/car4.png",
+      "structure_image_sha256": "d3a1cd6d393e7c19a4d18a631cbfd808df56d6a2efc0bb42996b4bcf4444c62c",
+      "routing_order": [
+        2,
+        1,
+        0
+      ],
+      "assignments": [
+        {
+          "part_index": 1,
+          "part_name": "front",
+          "overlay_color": "red",
+          "target_mask": "prepared/masking/target/cars/car4/target_01.png",
+          "reference_image": "cars/car3.png",
+          "reference_image_sha256": "38cc87ef4849bb9300d33faff69b8a0b94a54211ce74224b8e36e4035e55a33e",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car3.png"
+        },
+        {
+          "part_index": 2,
+          "part_name": "cabin_body",
+          "overlay_color": "blue",
+          "target_mask": "prepared/masking/target/cars/car4/target_02.png",
+          "reference_image": "cars/car5.png",
+          "reference_image_sha256": "66ee91e0b64453b498f9f48b80177e30a337e820da593beebecc730b82664465",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car5.png"
+        },
+        {
+          "part_index": 3,
+          "part_name": "wheels",
+          "overlay_color": "green",
+          "target_mask": "prepared/masking/target/cars/car4/target_03.png",
+          "reference_image": "cars/car6.png",
+          "reference_image_sha256": "bc9f9f31d72367f783371aafa7c6de98a5064846dcdef2de614f43d5400c2f23",
+          "reference_foreground_mask": "prepared/masking/foreground/cars/car6.png"
+        }
+      ],
+      "settings": {
+        "seed": 0,
+        "reference_scale_lambda": 3.0,
+        "foreground_token_threshold_tau": 0.3,
+        "reference_token_budget": 0,
+        "steps": 20,
+        "guidance": {
+          "depth": 10.0,
+          "canny": 30.0
+        },
+        "plan_file_defaults": {
+          "steps": 28,
+          "guidance": 10.0
+        }
+      }
+    }
+  ]
+}

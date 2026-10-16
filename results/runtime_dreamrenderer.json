@@ -1,0 +1,58 @@
+{
+  "method": "DreamRenderer",
+  "steps": 20,
+  "repeats": 3,
+  "protocol": "separate process per repeat, warm-up discarded, GPU idle",
+  "results": [
+    {
+      "reference_count": 1,
+      "seconds_mean": 29.41161850700155,
+      "seconds_std": 0.6554698866645096,
+      "samples": [
+        28.688359964988194,
+        29.580080536019523,
+        29.96641501999693
+      ]
+    },
+    {
+      "reference_count": 2,
+      "seconds_mean": 30.530640687657677,
+      "seconds_std": 0.46861635177407546,
+      "samples": [
+        29.99114597699372,
+        30.83658718696097,
+        30.764188899018336
+      ]
+    },
+    {
+      "reference_count": 3,
+      "seconds_mean": 40.64736069800953,
+      "seconds_std": 0.6439369477234577,
+      "samples": [
+        40.032294673030265,
+        40.59305793099338,
+        41.316729490004946
+      ]
+    },
+    {
+      "reference_count": 7,
+      "seconds_mean": 39.05195790934764,
+      "seconds_std": 0.31881529511943923,
+      "samples": [
+        38.78344458003994,
+        38.96811222098768,
+        39.404316927015316
+      ]
+    },
+    {
+      "reference_count": 16,
+      "seconds_mean": 98.87942548299907,
+      "seconds_std": 0.8959564368063023,
+      "samples": [
+        97.9485042640008,
+        98.95401885203319,
+        99.73575333296321
+      ]
+    }
+  ]
+}

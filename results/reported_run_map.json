@@ -1,0 +1,89 @@
+{
+  "description": "Mapping from manuscript comparisons to prefixes in per_case_metrics.csv. Append _appearance or _spatial to select the metric family.",
+  "metric_family_suffixes": {
+    "appearance": [
+      "region_dino",
+      "dino_routing_accuracy",
+      "vgg_gram_distance",
+      "nonreference_clip_t"
+    ],
+    "spatial": [
+      "foreground_sam_iou",
+      "clip_iqa"
+    ]
+  },
+  "main_comparison": {
+    "depth": [
+      "depth_depth_only",
+      "depth_ms_diffusion",
+      "depth_fcat_diff",
+      "depth_dreamrenderer_fg",
+      "depth_refroute"
+    ],
+    "canny": [
+      "canny_depth_only",
+      "canny_dreamrenderer_fg",
+      "canny_refroute"
+    ]
+  },
+  "routing_and_connectivity_ablation": {
+    "depth": [
+      "depth_global_redux",
+      "depth_abl_full_isolation",
+      "depth_refroute"
+    ],
+    "canny": [
+      "canny_global_redux",
+      "canny_abl_full_isolation",
+      "canny_refroute"
+    ]
+  },
+  "dreamrenderer_input_matching": {
+    "depth": [
+      "depth_dreamrenderer_box",
+      "depth_dreamrenderer_mask",
+      "depth_dreamrenderer_fg"
+    ],
+    "canny": [
+      "canny_dreamrenderer_box",
+      "canny_dreamrenderer_fg"
+    ]
+  },
+  "seed_replication": {
+    "seed_0": [
+      "depth_refroute",
+      "depth_dreamrenderer_fg",
+      "canny_refroute",
+      "canny_dreamrenderer_fg"
+    ],
+    "seed_1": [
+      "seed1_depth_refroute",
+      "seed1_depth_dreamrenderer_fg",
+      "seed1_canny_refroute",
+      "seed1_canny_dreamrenderer_fg"
+    ],
+    "seed_2": [
+      "seed2_depth_refroute",
+      "seed2_depth_dreamrenderer_fg",
+      "seed2_canny_refroute",
+      "seed2_canny_dreamrenderer_fg"
+    ]
+  },
+  "reference_scale_sensitivity": [
+    "depth_lam1",
+    "depth_lam2",
+    "depth_lam3",
+    "depth_lam5",
+    "depth_lam10"
+  ],
+  "foreground_token_selection": {
+    "depth": [
+      "depth_refroute",
+      "depth_abl_no_filtering"
+    ],
+    "canny": [
+      "canny_refroute",
+      "canny_abl_no_filtering"
+    ]
+  }
+}

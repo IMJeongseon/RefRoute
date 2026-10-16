@@ -1,0 +1,765 @@
+{
+  "description": "Post-study codebook for the blinded A/B comparison; no file paths, image hashes, or login names are included.",
+  "rater_id_scheme": "R1--R11",
+  "severity_scale": {
+    "0": "intact",
+    "1": "mild",
+    "2": "severe"
+  },
+  "defect_labels": {
+    "duplicated_major_part": "part duplication",
+    "missing_or_malformed_major_part": "missing or malformed part",
+    "unnatural_region_boundary": "unnatural region boundary",
+    "disconnected_or_collaged_structure": "foreign patch"
+  },
+  "primary_endpoint": "Defect Rate (severity >= 1) per method",
+  "preference_values": [
+    "refroute",
+    "dreamrenderer_star",
+    "none"
+  ],
+  "human_rating_columns": {
+    "condition": "Structural condition: depth or canny.",
+    "rater_id": "Anonymous rater index R1--R11; stable across both conditions.",
+    "case_id": "Evaluation-configuration identifier matching the public manifest.",
+    "domain": "Internal domain key; building corresponds to the paper's buildings domain.",
+    "source_id": "Structure-image cluster identifier used by the bootstrap.",
+    "method": "Post-study decoded method identity: refroute or dreamrenderer_star.",
+    "severity": "Integer overall verdict: 0=intact, 1=mild, 2=severe.",
+    "not_intact": "Derived binary endpoint equal to 1 when severity is 1 or 2.",
+    "preferred_method": "Pair-level reference-transfer response, duplicated on both method rows: refroute, dreamrenderer_star, or none.",
+    "duplicated_major_part": "Binary per-output part-duplication observation.",
+    "missing_or_malformed_major_part": "Binary per-output missing-or-malformed-part observation.",
+    "unnatural_region_boundary": "Binary per-output unnatural-boundary observation.",
+    "disconnected_or_collaged_structure": "Legacy field name for the binary rater-facing Foreign patch observation."
+  },
+  "released_tables": {
+    "human_ratings_public.csv": "One row per condition, anonymous rater, case, and method. Preference is duplicated across the two method rows belonging to the same paired trial."
+  },
+  "missing_value_rules": {
+    "included_sheets": "Only complete 60-case sheets were included; no row in the released table has a missing required response.",
+    "no_preference": "Encoded as preferred_method=none."
+  },
+  "ab_mapping": [
+    {
+      "condition": "depth",
+      "case_id": "cheetah_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cheetah_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cow_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cow_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "giraffe_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "giraffe_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "goat_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "goat_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "horse_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "horse_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird0_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird0_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird1_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird1_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird2_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird2_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird3_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird3_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird4_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "bird4_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "basil_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "basil_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "brownstone_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "brownstone_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "colosseum_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "colosseum_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "house-modern_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "house-modern_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "house-square_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "house-square_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly0_r1_123",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly0_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly1_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly1_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly2_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly2_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly3_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly3_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly4_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "butterfly4_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake0_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake0_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake1_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake1_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake2_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake2_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake3_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake3_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake4_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "cake4_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car0_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car0_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car1_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car1_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car2_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car2_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car3_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car3_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car4_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "depth",
+      "case_id": "car4_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cheetah_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cheetah_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cow_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cow_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "giraffe_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "giraffe_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "goat_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "goat_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "horse_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "horse_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird0_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird0_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird1_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird1_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird2_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird2_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird3_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird3_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird4_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "bird4_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "basil_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "basil_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "brownstone_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "brownstone_r2_321",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "colosseum_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "colosseum_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "house-modern_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "house-modern_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "house-square_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "house-square_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly0_r1_123",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly0_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly1_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly1_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly2_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly2_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly3_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly3_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly4_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "butterfly4_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake0_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake0_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake1_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake1_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake2_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake2_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake3_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake3_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake4_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "cake4_r2_132",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car0_r1_213",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car0_r2_231",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car1_r1_312",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car1_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car2_r1_123",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car2_r2_132",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car3_r1_213",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car3_r2_231",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car4_r1_312",
+      "A_method": "refroute",
+      "B_method": "dreamrenderer_star"
+    },
+    {
+      "condition": "canny",
+      "case_id": "car4_r2_321",
+      "A_method": "dreamrenderer_star",
+      "B_method": "refroute"
+    }
+  ]
+}
