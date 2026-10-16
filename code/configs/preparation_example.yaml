@@ -1,6 +1,4 @@
-# The color overlay is an RGB annotation in which the three target parts are
-# red, blue, and green. Reference masks are generated with BiRefNet when
-# donor_mask is omitted.
+# The overlay paints the three target parts red, blue, and green; donor_mask is optional (BiRefNet).
 source: assets/structure.png
 source_overlay: assets/structure_three_part_overlay.png
 prompt: A realistic photograph of an animal in a snow-covered landscape during snowfall.

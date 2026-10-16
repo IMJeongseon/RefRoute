@@ -87,8 +87,7 @@ def clean_mask(binary):
     for index in range(1, count):
         if stats[index, cv2.CC_STAT_AREA] >= minimum:
             keep[labels == index] = 1
-    # Pad with a guaranteed exterior background so hole filling remains valid
-    # even when foreground touches the top-left corner or any image boundary.
+    # Pad so hole filling still works when the foreground touches the border.
     padded = np.pad(keep, 1, mode="constant", constant_values=0)
     flood = padded.copy()
     cv2.floodFill(flood, None, (0, 0), 1)

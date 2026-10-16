@@ -1,6 +1,4 @@
-# Replace these paths with licensed assets. The benchmark assets are not
-# redistributed. For Canny, change control_type to `canny` and omit
-# depth_control; the edge map is then derived deterministically from source.
+# Replace the paths with your own images. For Canny, set control_type: canny and drop depth_control.
 source: assets/structure.png
 depth_control: assets/structure_depth.png
 control_type: depth

@@ -1,26 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute every reported human-evaluation number from the released table.
-
-This script is self-contained: it reads only `human_ratings_public.csv`, which
-sits next to it, and needs nothing from the working repository. Run it to check
-that the numbers in the paper follow from the released row-level data.
-
-    python verify_human_eval.py                  # print the endpoints
-    python verify_human_eval.py --check          # also diff against the summary
-
-`--check` compares the recomputed values with `human_summary_public.json` and
-exits non-zero on any mismatch.
-
-Method. Every comparison is paired per configuration. Intervals come from a
-cluster bootstrap that resamples the 31 source images, because most sources
-contribute two configurations that share the object, the masks and the part
-decomposition. Each replicate draws 31 sources with replacement and averages
-the per-rating differences of the drawn sources. We use 10,000 replicates with
-seed 0 and report the 2.5th and 97.5th percentiles. Raters are not resampled,
-so the intervals are conditional on this panel of eleven raters.
-
-Requires: numpy.
-"""
+"""Recompute every reported human-evaluation number from the released table."""
 from __future__ import annotations
 
 import argparse
@@ -59,10 +38,7 @@ def rows(condition: str) -> list[dict]:
 
 
 def boot(by_cluster: dict[str, list[float]]) -> tuple[float, float, float]:
-    """Point estimate and percentile interval over resampled source clusters."""
-    # Match the frozen analysis ordering, which sorted source-image basenames.
-    # The public table prefixes those names with the domain to make the cluster
-    # identifier unambiguous; stripping only for ordering preserves the groups.
+    # Sort by bare basename as the frozen analysis did; the domain prefix only disambiguates.
     keys = np.array(sorted(by_cluster, key=lambda value: os.path.basename(value)))
     flat = [v for k in keys for v in by_cluster[k]]
     rng = np.random.default_rng(SEED)
@@ -75,7 +51,6 @@ def boot(by_cluster: dict[str, list[float]]) -> tuple[float, float, float]:
 
 
 def rate(records: list[dict], method: str, field) -> tuple[float, float, float]:
-    """Rate of `field` over one method's ratings, clustered by source."""
     grouped: dict[str, list[float]] = {}
     for r in records:
         if r["method"] != method:
@@ -85,7 +60,6 @@ def rate(records: list[dict], method: str, field) -> tuple[float, float, float]:
 
 
 def paired(records: list[dict], field) -> tuple[float, float, float]:
-    """RefRoute minus DreamRenderer* on the same (rater, case) pairs."""
     pairs: dict[tuple[str, str], dict[str, float]] = {}
     for r in records:
         pairs.setdefault((r["rater_id"], r["case_id"]), {})[r["method"]] = float(field(r))
@@ -112,8 +86,8 @@ def compute() -> dict:
         cases = sorted({r["case_id"] for r in records})
         sources = sorted({r["source_id"] for r in records})
 
-        not_intact = lambda r: int(r["not_intact"])          # noqa: E731
-        severe = lambda r: int(r["severity"] == "2")          # noqa: E731
+        not_intact = lambda r: int(r["not_intact"])
+        severe = lambda r: int(r["severity"] == "2")
 
         block: dict = {
             "n_raters": len(raters),

@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate and compare the released per-configuration automatic metrics.
-
-Examples
---------
-Summarize one method across its appearance/spatial files::
-
-    python results/analyze_metrics.py --summary depth_refroute
-
-Compute a paired comparison with the paper's clustered confidence interval::
-
-    python results/analyze_metrics.py \
-      --compare depth_refroute depth_dreamrenderer_fg
-
-List every released run and validate its 60-case coverage::
-
-    python results/analyze_metrics.py --all-runs --check
-"""
+"""Aggregate and compare the released per-configuration automatic metrics."""
 from __future__ import annotations
 
 import argparse
@@ -122,9 +106,7 @@ def clustered_difference(
     by_source: dict[str, list[float]] = defaultdict(list)
     for case in shared:
         by_source[sources[case]].append(first[case] - second[case])
-    # The frozen analysis sorted source-image basenames before drawing cluster
-    # indices. Preserve that ordering so the seeded Monte Carlo interval is
-    # bit-for-bit reproducible from the public domain-prefixed identifiers.
+    # Sort basenames as the frozen analysis did, so the seeded bootstrap is bit-exact.
     keys = np.asarray(sorted(by_source, key=lambda value: Path(value).name))
     flat = [value for key in keys for value in by_source[str(key)]]
     rng = np.random.default_rng(SEED)

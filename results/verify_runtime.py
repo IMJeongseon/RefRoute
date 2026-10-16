@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute the reported runtime table from the released measurements.
-
-This script is self-contained: it reads only `runtime_matched.json` and
-`runtime_dreamrenderer.json`, which sit beside it, and needs nothing beyond the
-standard library.
-
-  python results/verify_runtime.py           # print the table
-  python results/verify_runtime.py --check   # diff against the reported values
-
-`--check` compares the recomputed means and speedups with the values printed in
-the manuscript and exits non-zero on any mismatch.
-
-RefRoute timings come from the matched-protocol run, which times both methods
-across the same start and stop points. DreamRenderer* timings come from its own
-run under the same protocol: 20 sampling steps, three repeats after a discarded
-warm-up, one measurement process per repeat on an idle GPU.
-"""
+"""Recompute the reported runtime table from the released measurements."""
 from __future__ import annotations
 
 import argparse
@@ -26,8 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 MATCHED = os.path.join(HERE, "runtime_matched.json")
 BASELINE = os.path.join(HERE, "runtime_dreamrenderer.json")
 
-# The manuscript reports K = 1, 3 and 16.  The baseline file also carries K = 2
-# and K = 7, measured for the sequence-scaling discussion and not tabulated.
+# The paper tabulates K = 1, 3, 16; K = 2 and 7 are untabulated extras.
 REPORTED_K = (1, 3, 16)
 REPORTED = {
     1: {"dreamrenderer_star": 29.4, "refroute": 11.7, "speedup": 2.5},
@@ -82,8 +65,7 @@ def main() -> int:
             bad += 1
 
     for k in REPORTED_K:
-        # The table prints one decimal, so a rounding-width tolerance is exact
-        # enough to catch a changed measurement without tripping on formatting.
+        # Tolerate rounding to one decimal.
         close(f"K={k}/dreamrenderer_star", theirs[k], REPORTED[k]["dreamrenderer_star"], 0.05)
         close(f"K={k}/refroute", ours[k], REPORTED[k]["refroute"], 0.05)
         close(f"K={k}/speedup", theirs[k] / ours[k], REPORTED[k]["speedup"], 0.05)
