@@ -1,0 +1,26 @@
+# Replace these paths with licensed assets. The benchmark assets are not
+# redistributed. For Canny, change control_type to `canny` and omit
+# depth_control; the edge map is then derived deterministically from source.
+source: assets/structure.png
+depth_control: assets/structure_depth.png
+control_type: depth
+prompt: A realistic photograph of an animal in a snow-covered landscape during snowfall.
+parts:
+  - name: head_and_neck
+    target_mask: assets/target_part_1.png
+    donor: assets/reference_1.png
+    donor_mask: assets/reference_1_foreground.png
+  - name: torso
+    target_mask: assets/target_part_2.png
+    donor: assets/reference_2.png
+    donor_mask: assets/reference_2_foreground.png
+  - name: limbs_and_tail
+    target_mask: assets/target_part_3.png
+    donor: assets/reference_3.png
+    donor_mask: assets/reference_3_foreground.png
+lam: 3.0
+threshold: 0.3
+reference_token_budget: 0
+steps: 20
+guidance: 10.0
+seed: 0

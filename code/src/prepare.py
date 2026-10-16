@@ -158,8 +158,7 @@ def make_foreground_masks(requests, device):
     from transformers import AutoModelForImageSegmentation
 
     model = AutoModelForImageSegmentation.from_pretrained(
-        "ZhengPeng7/BiRefNet", trust_remote_code=True,
-        local_files_only=True).to(device).eval()
+        "ZhengPeng7/BiRefNet", trust_remote_code=True).to(device).eval()
     dtype = next(model.parameters()).dtype
     transform = transforms.Compose([
         transforms.Resize((1024, 1024)),
@@ -218,11 +217,11 @@ def write_manifest(config, depth_path, target_masks, reference_masks, output):
         "depth_control": relative_path(depth_path),
         "parts": parts,
         "prompt": config["prompt"],
-        "lam": float(config.get("lam", 1.0)),
+        "lam": float(config.get("lam", 3.0)),
         "threshold": float(config.get("threshold", 0.3)),
         "reference_token_budget": int(
             config.get("reference_token_budget", 0)),
-        "steps": int(config.get("steps", 28)),
+        "steps": int(config.get("steps", 20)),
         "guidance": float(config.get("guidance", 10.0)),
         "seed": int(config.get("seed", 0)),
     }

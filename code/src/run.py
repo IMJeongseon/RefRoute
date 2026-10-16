@@ -98,7 +98,7 @@ def shard_budget():
 
 def load_redux():
     redux = FluxPriorReduxPipeline.from_pretrained(
-        REDUX, torch_dtype=DTYPE, local_files_only=True)
+        REDUX, torch_dtype=DTYPE)
     redux.image_encoder.to(TEXT_DEV, DTYPE)
     redux.image_embedder.to(TEXT_DEV, DTYPE)
     return redux
@@ -109,8 +109,7 @@ def load_models(control_type="depth"):
         raise ValueError(f"unsupported control type: {control_type}")
     control_model = DEPTH if control_type == "depth" else CANNY
     transformer = FluxTransformer2DModel.from_pretrained(
-        control_model, subfolder="transformer", torch_dtype=DTYPE,
-        local_files_only=True)
+        control_model, subfolder="transformer", torch_dtype=DTYPE)
     device_map = infer_auto_device_map(
         transformer, max_memory=shard_budget(),
         no_split_module_classes=[
@@ -137,8 +136,7 @@ def load_models(control_type="depth"):
             return torch.device(TEXT_DEV)
 
     pipeline = Pipeline.from_pretrained(
-        FLUX, transformer=transformer, torch_dtype=DTYPE,
-        local_files_only=True)
+        FLUX, transformer=transformer, torch_dtype=DTYPE)
     pipeline.text_encoder.to(TEXT_DEV)
     pipeline.text_encoder_2.to(TEXT_DEV)
     pipeline.vae.to(TEXT_DEV)

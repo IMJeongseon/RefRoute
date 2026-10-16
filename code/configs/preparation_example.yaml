@@ -1,0 +1,24 @@
+# The color overlay is an RGB annotation in which the three target parts are
+# red, blue, and green. Reference masks are generated with BiRefNet when
+# donor_mask is omitted.
+source: assets/structure.png
+source_overlay: assets/structure_three_part_overlay.png
+prompt: A realistic photograph of an animal in a snow-covered landscape during snowfall.
+overlay_threshold: 60.0
+depth: small
+lam: 3.0
+threshold: 0.3
+reference_token_budget: 0
+steps: 20
+guidance: 10.0
+seed: 0
+parts:
+  - name: head_and_neck
+    color: red
+    donor: assets/reference_1.png
+  - name: torso
+    color: blue
+    donor: assets/reference_2.png
+  - name: limbs_and_tail
+    color: green
+    donor: assets/reference_3.png

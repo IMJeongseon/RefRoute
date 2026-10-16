@@ -49,6 +49,34 @@ The reported protocol is 1024x1024 output, 20 sampling steps, seed 0, guidance
 threshold tau = 0.3, and no reference-token cap. It is recorded per
 configuration in the manifest, and once under its `reported_protocol` key.
 
+## Running RefRoute on your own images
+
+You need a structure image, three reference images, and an RGB overlay: a copy
+of the structure image with each target part painted red, blue, or green.
+Install `requirements.txt`, then accept the FLUX.1-dev, FLUX.1-Depth-dev,
+FLUX.1-Canny-dev, and FLUX.1-Redux-dev licenses on Hugging Face and run
+`huggingface-cli login`; the weights download on first use. CUDA is required.
+
+Run both scripts from `code/`. They change into that directory on start, so
+every path in a config, and the `--config` path itself, is relative to `code/`.
+
+```bash
+cd code
+# edit the paths in configs/preparation_example.yaml, then:
+python src/prepare.py --config configs/preparation_example.yaml
+# writes data/prepared/<structure>_v6/config.yaml with masks and depth
+python src/run.py --config data/prepared/<structure>_v6/config.yaml
+# Canny instead of depth:
+python src/run.py --config data/prepared/<structure>_v6/config.yaml --control-type canny
+```
+
+`prepare.py` turns the overlay into target-part masks, computes the depth map,
+and makes reference foreground masks with BiRefNet unless `donor_mask` is given.
+The overlay route handles three parts. For any other number of parts, write the
+`run.py` config directly with your own masks, following
+`configs/generation_example.yaml`. Both routes default to the reported
+protocol. The output is written to `outputs/<structure>.png`.
+
 ## Evaluation metadata
 
 `benchmark/manifest_60.json` gives, for each of the 60 configurations, the case
