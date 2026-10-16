@@ -25,9 +25,3 @@ released. Label definitions and missing-value rules are in
 `runtime_matched.json` and `runtime_dreamrenderer.json` contain the measurements
 underlying the runtime table. `verify_runtime.py --check` recomputes the reported
 means and speedups.
-
-Run all release-level checks from the bundle root:
-
-```bash
-python validate_release.py
-```

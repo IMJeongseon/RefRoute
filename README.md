@@ -16,22 +16,21 @@ From the Appendix:
 
 ```
 release/
-  validate_release.py one-command data and consistency audit
   requirements.txt   pinned versions the reported runs used
   benchmark/         the evaluation metadata: 60 configurations, image inventory
   code/              the generation code
   results/           metrics, ratings, runtime records, codebook, analysis scripts
 ```
 
-Run the complete data-only audit from this directory with:
+Check the reported numbers from the released files with:
 
 ```bash
-python validate_release.py
+python results/analyze_metrics.py --all-runs --check
+python results/verify_human_eval.py --check
+python results/verify_runtime.py --check
 ```
 
-The audit requires only Python and NumPy. It checks the benchmark composition,
-all metric-run coverage, the anonymized human records, the reconstructed plan,
-and the reported human and runtime aggregates.
+These need only Python and NumPy.
 
 ## Generation code
 
@@ -170,8 +169,8 @@ them are provided here and in the manuscript.
 
 Python 3.12 and CUDA 12.8; the reported runs used a single RTX PRO 6000
 Blackwell. `requirements.txt` pins the versions those runs used; install the
-CUDA build of `torch` and `torchvision` from the PyTorch index. The data-only
-audit and analysis scripts require only NumPy and run without a GPU or model
+CUDA build of `torch` and `torchvision` from the PyTorch index. The analysis
+and verification scripts require only NumPy and run without a GPU or model
 weights.
 
 ## Consent
