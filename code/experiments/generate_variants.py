@@ -51,13 +51,6 @@ VARIANTS = (
 
 
 def routing_groups(order: list[int], count: int) -> tuple[tuple[int, ...], ...]:
-    """Assign target parts to reference slots.
-
-    With three parts the benchmark uses one reference per part, one reference
-    for the whole object, or a two-way split.  A layout that declares as many
-    parts as references simply gives each part its own reference, which is what
-    a multi-object layout needs.
-    """
     if count == len(order):
         return tuple((index,) for index in order)
     if count == 1:
@@ -99,13 +92,6 @@ def soft_grouped_ownership(
 
 def instance_text_tokens(pipeline, prompts: list[str], count: int,
                          device) -> list[torch.Tensor]:
-    """Encode one text description per region as routable condition tokens.
-
-    The routing bias does not depend on what the condition tokens represent, so
-    a region can be driven by its own text description instead of a reference
-    image.  Each description is encoded on its own and truncated to its
-    non-padding length, so the regions receive comparable token counts.
-    """
     tokens = []
     for prompt in prompts:
         embeds, _, _ = pipeline.encode_prompt(
@@ -155,7 +141,6 @@ def deterministic_kmeans(
     count: int,
     iterations: int = 20,
 ) -> tuple[torch.Tensor, torch.Tensor]:
-    """Cluster a single Redux token sequence without random initialization."""
     if tokens.shape[0] != 1:
         raise ValueError("token clustering expects batch size one")
     values = tokens[0].float()
@@ -197,8 +182,7 @@ def deterministic_kmeans(
         if not len(members):
             continue
         centroid = members.mean(0)
-        # Averaging reduces vector magnitude.  Restore the typical magnitude
-        # of that cluster so lambda retains a comparable interpretation.
+        # Averaging shrinks norms; rescale so lambda keeps its meaning.
         typical_norm = members.norm(dim=-1).mean()
         centroid = torch.nn.functional.normalize(centroid, dim=0) * typical_norm
         cluster_centroids.append(centroid)
@@ -222,7 +206,6 @@ def robust_centroid_tokens(
     candidate_count: int,
     min_fraction: float,
 ) -> tuple[torch.Tensor, list[int]]:
-    """Keep only well-supported appearance clusters and drop rare features."""
     centroids, supports = deterministic_kmeans(tokens, candidate_count)
     minimum = max(2, int(math.ceil(tokens.shape[1] * min_fraction)))
     eligible = [
@@ -271,7 +254,6 @@ def soft_regional_bias(
     ownership: np.ndarray,
     floor: float = 1e-3,
 ) -> tuple[torch.Tensor, list[tuple[int, int]]]:
-    """Feather reference access with log-weight attention penalties."""
     condition_len = text_len + sum(reference_sizes)
     total_len = condition_len + 64 * 64
     bias = torch.zeros(
@@ -302,7 +284,6 @@ def one_wrong_reference_bias(
     list[tuple[int, int]],
     list[dict[str, int]],
 ]:
-    """Keep the correct route and expose one cyclic wrong reference per region."""
     if len(reference_sizes) < 2:
         raise ValueError("one_wrong_reference requires at least two references")
     if len(reference_sizes) != ownership.shape[0]:
@@ -340,9 +321,7 @@ class AttentionMaskGate:
 
     def __call__(self, *args: object, **kwargs: object) -> object:
         if not self.enabled:
-            # diffusers' Flux Attention forwards the mask as the fourth
-            # positional processor argument.  Some versions instead expose it
-            # as a keyword, so handle both calling conventions.
+            # diffusers passes the mask positionally or as a keyword depending on version.
             if len(args) >= 4:
                 mutable_args = list(args)
                 mutable_args[3] = None
@@ -401,12 +380,6 @@ def read_plan(path: Path, ids: list[str] | None) -> list[dict[str, object]]:
 
 
 def variant_name(args: argparse.Namespace) -> str:
-    """Derive the output directory name.
-
-    An explicit ``--output-name`` is used verbatim so that a driver script can
-    keep result paths stable; without one the settings are appended so that
-    exploratory runs do not overwrite each other.
-    """
     if args.output_name:
         return args.output_name
     name = args.variant
@@ -719,9 +692,7 @@ def generate(args: argparse.Namespace) -> None:
             text_cache_hit = False
             if not args.no_cache:
                 text_cache[prompt] = (text.cpu(), pooled.cpu())
-        # Depth-only has no reference embeddings, so a reference scale is not
-        # applicable.  Keep it out of the provenance instead of inheriting the
-        # historical plan value (7.5) inside the lambda=2.5 suite.
+        # Depth-only has no references, so no lambda is recorded.
         lam = None if args.variant == "depth_only" else float(
             case["lam"] if args.lam is None else args.lam
         )
@@ -767,10 +738,7 @@ def generate(args: argparse.Namespace) -> None:
             attention, routes = run.regional_bias(
                 int(text.shape[1]), allocation, ownership)
         if args.reference_query_scope == "own_region":
-            # DreamRenderer restricts each instance's condition tokens to its own
-            # region, so the condition is refined as if that instance were being
-            # generated alone.  RefRoute leaves those rows open to the whole
-            # image.  This variant isolates that single pathway.
+            # Condition rows see only their own region, as in DreamRenderer.
             if attention is None:
                 raise ValueError(
                     "--reference-query-scope applies only to variants that "

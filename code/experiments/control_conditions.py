@@ -1,11 +1,4 @@
-"""Shared structural-control handling for RefRoute comparison runners.
-
-The benchmark plans currently store precomputed depth maps.  Canny controls
-are derived deterministically from the same source image for every method and
-cached under the requested experiment output root.  Keeping this logic in one
-module prevents DreamRenderer and RefRoute from silently receiving different
-edge maps.
-"""
+"""Shared depth/Canny control handling, so every method gets the same edge map."""
 from __future__ import annotations
 
 import hashlib
@@ -23,7 +16,6 @@ CONTROL_MODEL_IDS = {
 
 
 def control_model_id(control_type: str, override: str | None = None) -> str:
-    """Return the selected checkpoint without performing any network access."""
     if control_type not in CONTROL_MODEL_IDS:
         raise ValueError(f"unsupported control type: {control_type}")
     return override or CONTROL_MODEL_IDS[control_type]
@@ -69,14 +61,13 @@ def make_canny_image(
     high_threshold: int = 200,
     resolution: int = 1024,
 ) -> Image.Image:
-    """Create the exact square edge condition used by both comparison methods."""
     if resolution <= 0:
         raise ValueError("control resolution must be positive")
     if not 0 <= low_threshold < high_threshold <= 255:
         raise ValueError("Canny thresholds require 0 <= low < high <= 255")
     try:
         import cv2
-    except ImportError as error:  # pragma: no cover - environment-specific
+    except ImportError as error:
         raise RuntimeError("OpenCV is required for Canny preprocessing") from error
 
     resized = source.convert("RGB").resize(
@@ -104,7 +95,6 @@ def load_control_image(
     high_threshold: int = 200,
     resolution: int = 1024,
 ) -> tuple[Image.Image, dict[str, Any]]:
-    """Load a plan depth map or derive a cached Canny map from its source."""
     if control_type == "depth":
         if "depth_control" not in case:
             raise ValueError(f"case {case.get('id')} has no depth_control")
@@ -122,8 +112,7 @@ def load_control_image(
 
     if control_type != "canny":
         raise ValueError(f"unsupported control type: {control_type}")
-    # Some cases ship an edge map produced elsewhere; re-running Canny on it
-    # would detect the edges of the edges, so use it as given.
+    # A shipped edge map is used as is; Canny on it would find edges of edges.
     if "canny_control" in case:
         path = _rooted(str(case["canny_control"]), root)
         if not path.is_file():
@@ -188,7 +177,6 @@ def control_run_metadata(
     high_threshold: int,
     resolution: int,
 ) -> dict[str, Any]:
-    """Return manifest fields shared by the two runners."""
     record: dict[str, Any] = {
         "control_type": control_type,
         "control_model": model_id,

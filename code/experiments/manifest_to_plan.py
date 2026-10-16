@@ -1,24 +1,4 @@
-"""Rebuild a runnable plan file from the released benchmark manifest.
-
-`release/benchmark/manifest_60.json` describes the 60 configurations without
-carrying any image.  Every path the generators need follows a fixed convention,
-so the plan can be reconstructed from the manifest alone; only the images and
-masks themselves have to be supplied.
-
-  python experiments/manifest_to_plan.py \
-      --manifest release/benchmark/manifest_60.json --out data/prepared/plans/plan_intent.json
-
-  python experiments/manifest_to_plan.py --verify data/prepared/plans/plan_intent.json
-
-`--verify` compares the reconstruction against an existing plan and reports any
-field that differs, which is how the manifest is checked for completeness.
-
-The emitted `steps` and `guidance` are the reported protocol: 20 steps and
-guidance 10, the Depth value.  Canny runs pass `--guidance 30` on the command
-line.  The plan file used for the reported runs carried a stale 28-step default
-that every run overrode; `--plan-defaults` reproduces that file exactly and is
-implied by `--verify`.
-"""
+"""Rebuild a runnable plan file from the released benchmark manifest."""
 from __future__ import annotations
 
 import argparse
@@ -27,9 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# The script is shipped both in the repository (experiments/) and inside the
-# release bundle (release/code/experiments/), so the manifest sits at a
-# different depth in each.  Both are tried before giving up.
+# The repository and the release bundle keep the manifest at different depths.
 MANIFEST_CANDIDATES = (
     ROOT / "release/benchmark/manifest_60.json",
     ROOT.parent / "benchmark/manifest_60.json",
@@ -70,10 +48,7 @@ def build_plan(manifest: dict, plan_defaults: bool = False) -> dict:
             "lam": settings["reference_scale_lambda"],
             "threshold": settings["foreground_token_threshold_tau"],
             "reference_token_budget": settings["reference_token_budget"],
-            # The plan file carried a stale 28-step default that every reported
-            # run overrode on the command line.  Emit the reported value, so a
-            # plan built here reproduces the protocol even when --steps is not
-            # passed; --plan-defaults restores the original for verification.
+            # Emit the reported 20 steps; --plan-defaults restores the plan's stale 28.
             "steps": (defaults.get("steps", settings["steps"]) if plan_defaults
                       else settings["steps"]),
             "guidance": (defaults.get("guidance", settings["guidance"]["depth"])

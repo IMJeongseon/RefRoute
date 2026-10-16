@@ -20,13 +20,7 @@ PROMPT_SETTINGS = {
     "desert": "in a sandy desert",
 }
 
-# Describe only the source object's semantic class. Deliberately exclude
-# colour, material, pattern, style and donor identity so text cannot solve the
-# appearance-routing task for the model. Where a more specific noun was
-# available it was rejected for carrying exactly such a prior: cathedral for
-# basil, amphitheater for colosseum, playhouse for house-square, doughnut for
-# cake1. Species names are excluded for the same reason; the structure they
-# would have supplied comes from the depth or Canny control instead.
+# Class nouns only: colour, material, style, or species would let text solve the routing task.
 SOURCE_SUBJECTS = {
     "animals": {
         "cheetah": "an animal",
@@ -109,8 +103,7 @@ def readable_region(name: str) -> str:
         "torso_tail_legs": "torso, tail, and legs",
         "forewing_left": "left forewing",
         "forewing_right": "right forewing",
-        # The source masks use RGB labels, but mentioning those colours in a
-        # text-control ablation would introduce an unintended appearance cue.
+        # Mask label colours must not leak into the text as appearance cues.
         "red_region": "first target region",
         "blue_region": "second target region",
         "green_region": "third target region",
@@ -144,7 +137,6 @@ def appearance_clause(
 
 
 def appearance_prompt(base: str, clause: str) -> str:
-    """Attach an appearance clause without leaving a period before a comma."""
     return base.rstrip().removesuffix(".") + clause + "."
 
 
